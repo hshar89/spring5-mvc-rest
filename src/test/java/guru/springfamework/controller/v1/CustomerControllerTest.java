@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -108,6 +109,7 @@ public class CustomerControllerTest {
     mockMvc.perform(post("/api/v1/customers/")
         .contentType(MediaType.APPLICATION_JSON)
         .content(asJsonString(customer)))
+        .andDo(print())
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.firstname", equalTo("Fred")))
         .andExpect(jsonPath("$.customer_url", equalTo("/api/v1/customers/1")));
