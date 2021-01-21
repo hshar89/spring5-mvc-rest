@@ -1,8 +1,11 @@
 package guru.springfamework.api.v1.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class VendorDTO {
+  @ApiModelProperty(value = "Name of the Vendor", required = true)
   private String name;
 
   @JsonProperty("vendor_url")

@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import guru.springfamework.api.v1.model.CustomerDTO;
 import guru.springfamework.api.v1.model.CustomerListDTO;
 import guru.springfamework.service.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(description = "This is my Customer Controller")
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -26,7 +30,9 @@ public class CustomerController {
   @Autowired
   private CustomerService customerService;
 
+  @ApiOperation(value = "This will get a list of customers.", notes = "These are some notes about the API.")
   @GetMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
   public CustomerDTO findCustomerById(@PathVariable String id) {
     return customerService.getCustomerById(Long.valueOf(id));
   }

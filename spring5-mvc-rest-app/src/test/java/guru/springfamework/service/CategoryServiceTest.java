@@ -13,6 +13,7 @@ import guru.springfamework.api.v1.model.CategoryDTO;
 import guru.springfamework.domain.Category;
 import guru.springfamework.repositories.CategoryRepository;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -65,6 +66,7 @@ public class CategoryServiceTest {
     //then
     assertEquals(ID, categoryDTO.getId());
     assertEquals(NAME, categoryDTO.getName());
+    assertThat(null,null);
 
   }
 }
